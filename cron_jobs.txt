@@ -1,0 +1,3 @@
+#*/5 * * * * (cd ~/app/wcbotty; nohup python3 -u notify_lose_weight.py > /dev/null 2>&1 &)
+0 20 * * * (cd ~/app/wcbotty; nohup python3 -u notify_lose_weight.py > /dev/null 2>&1 &)
+0 8 * * * (cd ~/app/wcbotty; nohup python3 -u notify_lose_weight.py > /dev/null 2>&1 &)
