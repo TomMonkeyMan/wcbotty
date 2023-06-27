@@ -8,9 +8,14 @@ import threading
 
 @itchat.msg_register(itchat.content.TEXT)
 def reply_msg(msg):
-    if "I'm you father" in msg:
-        print("I got a msg", msg.text)
-        return "You piece of shit"
+    print("I got a msg", msg.text)
+    if "地震高岗" == msg.text.strip():
+        return "一派西山千古秀"
+    if "门朝大海" == msg.text.strip():
+        return "三河合水万年流"
+    if "地震高岗" in msg.text.strip():
+        if "一派西山千古秀" in msg.text.strip():
+            return "门朝大海, 三河合水万年流"
 
 
 def after_login():
@@ -40,7 +45,7 @@ def start_scheduler():
     scheduler = BackgroundScheduler()
 
     # Add a job to be executed at 9am, 12pm, and 6pm
-    scheduler.add_job(notify_lose_weight, "cron", hour="9,12,18")
+    scheduler.add_job(lambda: tify_lose_weight(itchat), "cron", hour="9,12,18")
 
     # Start the scheduler
     scheduler.start()
