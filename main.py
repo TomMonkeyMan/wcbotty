@@ -15,8 +15,22 @@ def reply_msg(msg):
         return "三河合水万年流"
     if "地震高岗" in msg.text.strip():
         if "一派西山千古秀" in msg.text.strip():
-            return "门朝大海, 三河合水万年流"
-
+            if ("门朝大海") not in msg.text.strip():
+                if "三河合水万年流" not in msg.text.strip():
+                    return "门朝大海, 三河合水万年流"
+    
+@itchat.msg_register([itchat.content.TEXT], isGroupChat=True)
+def reply_msg_group(msg):
+    print("I got a msg", msg.text)
+    if "地震高岗" == msg.text.strip():
+        return "一派西山千古秀"
+    if "门朝大海" == msg.text.strip():
+        return "三河合水万年流"
+    if "地震高岗" in msg.text.strip():
+        if "一派西山千古秀" in msg.text.strip():
+            if "门朝大海" not in msg.text.strip():
+                if "三河合水万年流" not in msg.text.strip():
+                    return "门朝大海, 三河合水万年流"
 
 def after_login():
     print("I'm logging in")
@@ -45,7 +59,7 @@ def start_scheduler():
     scheduler = BackgroundScheduler()
 
     # Add a job to be executed at 9am, 12pm, and 6pm
-    scheduler.add_job(lambda: tify_lose_weight(itchat), "cron", hour="9,12,18")
+    scheduler.add_job(lambda: notify_lose_weight(itchat), "cron", hour="9,12,18")
 
     # Start the scheduler
     scheduler.start()
