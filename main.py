@@ -52,7 +52,7 @@ def notify_lose_weight(itchat):
         for i in range(2):
             rand_num = np.random.random_integers(len(quote_list) - 1)
             quote_to_friends = quote_list[rand_num]
-
+            itchat.send(f"[AWESOMEO-{i}]: " + quote_to_friends + "\npls lose some weight~", toUserName=friends_info[0]['UserName'])
 
 def start_scheduler():
     # Create an instance of the scheduler
