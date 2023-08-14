@@ -5,7 +5,6 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 import threading
 
-
 @itchat.msg_register(itchat.content.TEXT)
 def reply_msg(msg):
     print("I got a msg", msg.text)
@@ -32,12 +31,16 @@ def reply_msg_group(msg):
                 if "三河合水万年流" not in msg.text.strip():
                     return "门朝大海, 三河合水万年流"
 
+#@itchat.msg_register([itchat.content.RECORDING, itchat.content.PICTURE])
+#def download_files(msg):
+#    msg.download(msg.fileName)   # 通过文件名下载文件
+
 def after_login():
     print("I'm logging in")
 
 
 def after_logout():
-    print("I'm logging out")
+    print("I'm logging out, this is a note message. Keep learn leetcode...")
 
 
 def notify_lose_weight(itchat):
