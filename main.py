@@ -4,10 +4,11 @@ import numpy as np
 from apscheduler.schedulers.background import BackgroundScheduler
 import datetime
 import threading
-
+from crazythursday import get_crazythursday
+ 
 @itchat.msg_register(itchat.content.TEXT)
 def reply_msg(msg):
-    print("I got a msg", msg.text)
+    #print("I got a msg", msg.text)
     if "地震高岗" == msg.text.strip():
         return "一派西山千古秀"
     if "门朝大海" == msg.text.strip():
@@ -17,10 +18,17 @@ def reply_msg(msg):
             if ("门朝大海") not in msg.text.strip():
                 if "三河合水万年流" not in msg.text.strip():
                     return "门朝大海, 三河合水万年流"
+    if "请查询tianyu的日程" == msg.text.strip():
+        tianyu_shcedule = '''20240616 舌头X突突二重奏X李剑虹 上海万代南梦宫
+20240706 当代电影大师X伤心欲绝 上海万代南梦宫
+20240821 晨曦光廊 上海MAO'''
+        return tianyu_shcedule
+    if "给我疯狂星期四" == msg.text.strip():
+        return get_crazythursday()
     
 @itchat.msg_register([itchat.content.TEXT], isGroupChat=True)
 def reply_msg_group(msg):
-    print("I got a msg", msg.text)
+    #print("I got a msg", msg.text)
     if "地震高岗" == msg.text.strip():
         return "一派西山千古秀"
     if "门朝大海" == msg.text.strip():
@@ -30,6 +38,13 @@ def reply_msg_group(msg):
             if "门朝大海" not in msg.text.strip():
                 if "三河合水万年流" not in msg.text.strip():
                     return "门朝大海, 三河合水万年流"
+    if "请查询tianyu的日程" == msg.text.strip():
+        tianyu_shcedule = '''20240616 舌头X突突二重奏X李剑虹 上海万代南梦宫
+20240706 当代电影大师X伤心欲绝 上海万代南梦宫
+20240821 晨曦光廊 上海MAO'''
+        return tianyu_shcedule
+    if "给我疯狂星期四" == msg.text.strip():
+        return get_crazythursday() 
 
 #@itchat.msg_register([itchat.content.RECORDING, itchat.content.PICTURE])
 #def download_files(msg):
